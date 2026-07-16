@@ -181,15 +181,9 @@
       align-items: flex-start;
       gap: 1.5rem;
     }
-    /* Cap by viewport height as well as width. Sized on width alone, a 360px
-       image at 8:9 is ~405px tall and swallows the whole first screen on a
-       short phone (iPhone SE/8), forcing a scroll to see the photo at all.
-       Deriving the cap from vh shrinks it on short screens instead of
-       cropping, so the full scene stays visible. Taller phones are unaffected:
-       at 900px viewport the 360px cap still wins. */
     .headshot {
       width: 100%;
-      max-width: min(360px, calc(50vh * 8 / 9));
+      max-width: 360px;
     }
   }
 

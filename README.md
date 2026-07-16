@@ -5,22 +5,30 @@ Personal site for Joseph K. Lane. Static HTML, no build step, no dependencies.
 ## Structure
 
 ```
-index.html     single page — markup, CSS, and JSON-LD all inline
-headshot.jpg   640x720, masthead photo
+public/
+  index.html   single page — markup, CSS, and JSON-LD all inline
+  headshot.jpg 640x720, masthead photo
+wrangler.jsonc deploy config
 ```
+
+Everything served lives in `public/`. Files at the repo root (this README, the
+wrangler config) are deliberately outside it so they aren't published.
 
 ## Local preview
 
-Open `index.html` in a browser. Paths are relative, so it renders correctly from
-the filesystem without a server.
+Open `public/index.html` in a browser. Paths are relative, so it renders
+correctly from the filesystem without a server.
 
 ## Deploying
 
-Hosted on Cloudflare Pages, connected to this repo.
+Deployed to Cloudflare as an assets-only Worker, connected to this repo.
 
 - Build command: *(none)*
-- Build output directory: `/`
+- Deploy command: `npx wrangler deploy`
 - Pushes to `main` deploy automatically
+
+There is no Worker code — `wrangler.jsonc` has no `main` entry point, just an
+`assets` directory. Cloudflare serves `public/` as static files.
 
 ## Things not to break
 

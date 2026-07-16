@@ -5,5 +5,13 @@
   "compatibility_date": "2026-07-16",
   "assets": {
     "directory": "./public"
-  }
+  },
+  // Attaches the apex domain to this Worker. Requires josephklane.com to be
+  // in the same Cloudflare account, which it is — DNS is handled automatically.
+  "routes": [
+    {
+      "pattern": "josephklane.com",
+      "custom_domain": true
+    }
+  ]
 }

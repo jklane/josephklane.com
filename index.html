@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Joseph K. Lane — Chief Architect &amp; VP of R&amp;D, Ivy Biomedical | Branford, Connecticut</title>
+<meta name="description" content="Joseph K. Lane is Chief Architect and VP of Research and Development at Ivy Biomedical Systems in Branford, Connecticut. He builds patient-monitoring systems for the MRI suite, and holds eleven patents in medical devices, energy storage, and precision optics.">
+<link rel="canonical" href="https://josephklane.com/">
+
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Joseph K. Lane — Chief Architect &amp; VP of R&amp;D, Ivy Biomedical">
+<meta property="og:description" content="Patient-monitoring systems for the MRI suite. Branford, Connecticut.">
+<meta property="og:url" content="https://josephklane.com/">
+<meta property="og:image" content="https://josephklane.com/headshot.jpg">
+<meta property="profile:first_name" content="Joseph">
+<meta property="profile:last_name" content="Lane">
+<meta name="twitter:card" content="summary">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://josephklane.com/#person",
+  "name": "Joseph Kerivan Lane",
+  "alternateName": ["Joseph K. Lane", "Joseph Lane", "Joe Lane"],
+  "url": "https://josephklane.com/",
+  "image": "https://josephklane.com/headshot.jpg",
+  "email": "mailto:jklane01@gmail.com",
+  "jobTitle": "Chief Architect and Vice President of Research and Development",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Ivy Biomedical Systems, Inc.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Branford",
+      "addressRegion": "CT",
+      "addressCountry": "US"
+    }
+  },
+  "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "Massachusetts Institute of Technology",
+    "sameAs": "https://en.wikipedia.org/wiki/Massachusetts_Institute_of_Technology"
+  },
+  "homeLocation": {
+    "@type": "Place",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Branford",
+      "addressRegion": "CT",
+      "addressCountry": "US"
+    }
+  },
+  "knowsAbout": [
+    "Hardware engineering",
+    "Embedded systems design",
+    "Mixed-signal electronics design",
+    "Low-noise analog design",
+    "Control systems",
+    "Signal processing",
+    "Algorithm development",
+    "Applied physics",
+    "Cardiac monitoring",
+    "MRI-compatible patient monitoring",
+    "Medical device engineering",
+    "Design controls and FDA design validation",
+    "Electro-optical systems",
+    "Laser beam steering",
+    "Energy storage and power management",
+    "Downhole telemetry"
+  ],
+  "sameAs": [
+    "https://www.linkedin.com/in/josephlane/",
+    "https://github.com/jklane",
+    "https://patents.google.com/?inventor=Joseph+Lane"
+  ]
+}
+</script>
+
+<style>
+  :root {
+    --bg: #fbfaf8;
+    --surface: #ffffff;
+    --text: #1a1a19;
+    --muted: #5c5a55;
+    --faint: #8b8880;
+    --rule: #e5e2dc;
+    --accent: #2f5d7c;
+    --accent-hover: #1e4058;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #131313;
+      --surface: #1b1b1b;
+      --text: #ecebe7;
+      --muted: #a6a39c;
+      --faint: #76736d;
+      --rule: #2f2e2c;
+      --accent: #8fb6d4;
+      --accent-hover: #b6d2e6;
+    }
+  }
+
+  :root[data-theme="light"] {
+    --bg: #fbfaf8;
+    --surface: #ffffff;
+    --text: #1a1a19;
+    --muted: #5c5a55;
+    --faint: #8b8880;
+    --rule: #e5e2dc;
+    --accent: #2f5d7c;
+    --accent-hover: #1e4058;
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #131313;
+    --surface: #1b1b1b;
+    --text: #ecebe7;
+    --muted: #a6a39c;
+    --faint: #76736d;
+    --rule: #2f2e2c;
+    --accent: #8fb6d4;
+    --accent-hover: #b6d2e6;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  .wrap {
+    max-width: 52rem;
+    margin: 0 auto;
+    padding: 4.5rem 1.5rem 5rem;
+  }
+
+  @media (max-width: 44rem) {
+    .wrap { padding-top: 3rem; }
+  }
+
+  /* The masthead spans the full column; body copy stays at a readable
+     measure (~75 characters) and shares the same left edge. */
+  section, footer { max-width: 38rem; }
+
+  /* ---------- masthead ---------- */
+
+  header {
+    margin-bottom: 3rem;
+    display: flex;
+    gap: 1.75rem;
+    align-items: center;
+  }
+
+  .headshot {
+    width: 290px;
+    flex: none;
+    aspect-ratio: 8 / 9;
+    object-fit: cover;
+    border-radius: 3px;
+    background: var(--rule);
+    display: block;
+  }
+
+  @media (max-width: 34rem) {
+    header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.4rem;
+    }
+    .headshot { width: 150px; }
+  }
+
+  h1 {
+    font-family: ui-serif, Georgia, "Times New Roman", serif;
+    font-size: clamp(2.1rem, 6vw, 2.7rem);
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    font-weight: 600;
+    margin: 0 0 0.65rem;
+  }
+
+  .tagline {
+    font-size: 1.06rem;
+    color: var(--muted);
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  .tagline strong { color: var(--text); font-weight: 600; }
+
+  /* ---------- sections ---------- */
+
+  section { margin-bottom: 2.75rem; }
+
+  h2 {
+    font-size: 0.775rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: var(--faint);
+    margin: 0 0 1rem;
+    padding-bottom: 0.55rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  p { margin: 0 0 1.15rem; }
+  p:last-child { margin-bottom: 0; }
+
+  /* ---------- background list ---------- */
+
+  .roles {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 1.1rem;
+  }
+
+  .roles li {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.25rem 1rem;
+    align-items: baseline;
+  }
+
+  .roles .where { font-weight: 600; }
+  .roles .what { color: var(--muted); font-size: 0.94rem; grid-column: 1 / -1; }
+  .roles .when {
+    color: var(--faint);
+    font-size: 0.85rem;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 30rem) {
+    .roles li { grid-template-columns: 1fr; }
+    .roles .when { grid-row: 3; }
+  }
+
+  /* ---------- links ---------- */
+
+  a {
+    color: var(--accent);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2.5px;
+    transition: color 0.12s ease;
+  }
+  a:hover { color: var(--accent-hover); }
+
+  .contact-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .contact-row .label {
+    color: var(--faint);
+    font-size: 0.87rem;
+    margin-right: 0.45rem;
+  }
+
+  footer {
+    margin-top: 3.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--rule);
+    font-size: 0.875rem;
+    color: var(--faint);
+  }
+
+  footer p { margin: 0; }
+
+  /* ---------- theme toggle ---------- */
+
+  .theme-toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    width: 2.25rem;
+    height: 2.25rem;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--rule);
+    border-radius: 50%;
+    background: var(--surface);
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 0.95rem;
+    line-height: 1;
+    padding: 0;
+  }
+  .theme-toggle:hover { color: var(--text); border-color: var(--faint); }
+
+  @media print { .theme-toggle { display: none; } }
+</style>
+</head>
+<body>
+
+<button class="theme-toggle" id="themeToggle" aria-label="Toggle color theme">◐</button>
+
+<div class="wrap">
+
+  <header>
+    <img class="headshot" src="headshot.jpg" width="640" height="720"
+         alt="Joseph K. Lane cutting a mortise with a chisel while framing a timber shelter.">
+
+    <div>
+      <h1>Joseph K. Lane</h1>
+      <p class="tagline">
+        <strong>Chief Architect &amp; VP of Research and Development</strong>, Ivy Biomedical Systems.<br>
+        Branford, Connecticut.
+      </p>
+    </div>
+  </header>
+
+  <section>
+    <h2>About</h2>
+    <p>
+      Joseph Kerivan Lane is Chief Architect and VP of Research and Development at Ivy Biomedical
+      Systems in Branford, Connecticut, where he leads patient-monitoring development across
+      hardware, firmware, and communication platforms.
+    </p>
+    <p>
+      He led development of Ivy's MRI-suite patient monitoring platform, engineering the hardware,
+      firmware, and communication interface to deliver best-in-class performance in the high-field,
+      high-noise MRI environment. Working in partnership with a major medical device OEM, he carried
+      the product through design validation and full production release.
+    </p>
+    <p>
+      Before Ivy he was Director of Engineering at FastCAP Systems, building advanced energy storage
+      and power management systems for Lockheed Martin, NASA, and Halliburton, and served as
+      Principal Investigator on a ~$1M NASA SBIR developing hybrid power systems for cube
+      satellites. He studied electrical engineering at MIT, and got his start at MIT Lincoln
+      Laboratory building a MEMS fast-steering mirror system for precision laser pointing. He holds
+      eleven patents.
+    </p>
+    <p>
+      His work has ranged across cardiac monitoring, beam steering, and downhole telemetry. The
+      common thread has been hardware and embedded design in challenging environments, and a
+      willingness to work wherever the problem happens to live — physics, algorithms, control, or
+      signal processing.
+    </p>
+  </section>
+
+  <section>
+    <h2>Background</h2>
+    <ul class="roles">
+      <li>
+        <span class="where">Ivy Biomedical Systems</span>
+        <span class="when">2018 – present</span>
+        <span class="what">Chief Architect / VP of Research and Development · Branford, CT</span>
+      </li>
+      <li>
+        <span class="where">FastCAP Systems</span>
+        <span class="when">2012 – 2018</span>
+        <span class="what">Director of Engineering / Lead Engineer · Boston, MA</span>
+      </li>
+      <li>
+        <span class="where">MIT Lincoln Laboratory</span>
+        <span class="when">2010 – 2012</span>
+        <span class="what">Research Engineer, Advanced Electro-Optical Systems · Lexington, MA</span>
+      </li>
+      <li>
+        <span class="where">Massachusetts Institute of Technology</span>
+        <span class="when">2011 – 2012</span>
+        <span class="what">MEng, Electrical Engineering · BS, Electrical Engineering and Computer Science</span>
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Patents</h2>
+    <p>
+      Eleven granted and pending patents spanning MRI gating and patient monitoring, ultracapacitor
+      construction, downhole telemetry and power generation, and processor-controlled ski bindings.
+      A full list is on
+      <a href="https://patents.google.com/?inventor=Joseph+Lane" rel="noopener">Google Patents</a>.
+    </p>
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <p>
+      Open to conversations about hard problems — especially the ones that fall between
+      disciplines.
+    </p>
+    <ul class="contact-row">
+      <li><span class="label">Email</span><a href="mailto:jklane01@gmail.com">jklane01@gmail.com</a></li>
+      <li><span class="label">LinkedIn</span><a href="https://www.linkedin.com/in/josephlane/" rel="me noopener">josephlane</a></li>
+      <li><span class="label">GitHub</span><a href="https://github.com/jklane" rel="me noopener">jklane</a></li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>Joseph Kerivan Lane · Branford, Connecticut</p>
+  </footer>
+
+</div>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    var toggle = document.getElementById('themeToggle');
+    var stored = null;
+    try { stored = localStorage.getItem('theme'); } catch (e) {}
+    if (stored) root.setAttribute('data-theme', stored);
+
+    toggle.addEventListener('click', function () {
+      var systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var current = root.getAttribute('data-theme') || (systemDark ? 'dark' : 'light');
+      var next = current === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    });
+  })();
+</script>
+
+</body>
+</html>

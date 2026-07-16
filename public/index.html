@@ -171,13 +171,20 @@
     display: block;
   }
 
-  @media (max-width: 34rem) {
+  /* Stack early — below this the photo starts squeezing the name rather than
+     sitting beside it. Once stacked, let the photo run the full column width:
+     at thumbnail size the beam and workshop disappear and it stops reading as
+     a scene. */
+  @media (max-width: 40rem) {
     header {
       flex-direction: column;
       align-items: flex-start;
-      gap: 1.4rem;
+      gap: 1.5rem;
     }
-    .headshot { width: 150px; }
+    .headshot {
+      width: 100%;
+      max-width: 360px;
+    }
   }
 
   h1 {

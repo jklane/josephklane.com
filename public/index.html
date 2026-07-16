@@ -163,6 +163,12 @@
 
   .headshot {
     width: 290px;
+    /* Required. The width/height attributes on the <img> are applied by WebKit
+       as a presentational hint, giving the element a definite 720px height —
+       and aspect-ratio is ignored unless one dimension is auto. Without this
+       the photo renders 720px tall in Safari at every width, while Chrome
+       (which uses the attributes only to derive a default ratio) looks fine. */
+    height: auto;
     flex: none;
     aspect-ratio: 8 / 9;
     object-fit: cover;

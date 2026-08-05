@@ -88,14 +88,38 @@ served page — invisible in the browser, but sitting there in view-source.
 
 Deployed to Cloudflare as an assets-only Worker, connected to this repo.
 
-- Build command: `hugo --minify`
-- Deploy command: `npx wrangler deploy`
-- Environment variable: `HUGO_VERSION` — pin it, or builds change under you
-- Pushes to `main` deploy automatically; other branches get preview URLs
+Configured in the Worker's **Settings → Build**:
+
+```
+Build command
+  curl -sL https://github.com/gohugoio/hugo/releases/download/v0.164.0/hugo_extended_0.164.0_linux-amd64.tar.gz | tar xz && ./hugo --minify
+
+Deploy command (production)      npx wrangler deploy
+Deploy command (non-production)  npx wrangler versions upload
+Root directory                   /
+Non-production branch builds     enabled
+```
+
+Hugo is downloaded in the build command rather than relying on the build image
+having it, so the version is pinned where you can see it. Bump the three
+occurrences of the version number together. No `HUGO_VERSION` build variable is
+needed — if one is set, it does nothing.
+
+**Both deploy commands must be set.** `npx wrangler deploy` means "make this
+live" and knows nothing about branches — with it as the only deploy command,
+pushing *any* branch deploys to production. That is not hypothetical; it is how
+this site first went live, from an unmerged branch. `wrangler versions upload`
+gives non-production branches a preview URL instead.
+
+Pushes to `main` deploy to josephklane.com. Other branches build to previews.
 
 There is no Worker code — `wrangler.jsonc` has no `main` entry point, just an
 `assets` directory pointed at `public/`, which is now Hugo's output rather than
 hand-written files.
+
+If production ever goes blank, that is what an empty `public/` looks like —
+usually the build failing or the build command being cleared. Roll back in the
+Worker's **Deployments** tab, then fix the build.
 
 ## Things not to break
 

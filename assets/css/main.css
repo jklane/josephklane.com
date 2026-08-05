@@ -1,0 +1,482 @@
+/* ------------------------------------------------------------------
+   Lifted verbatim from the inline <style> block in the original
+   single-page public/index.html. The homepage renders identically;
+   the only change is that these rules now live in one file that the
+   Butterhut pages share, so the two can't drift apart.
+   ------------------------------------------------------------------ */
+
+:root {
+  --bg: #fbfaf8;
+  --surface: #ffffff;
+  --text: #1a1a19;
+  --muted: #5c5a55;
+  --faint: #8b8880;
+  --rule: #e5e2dc;
+  --accent: #2f5d7c;
+  --accent-hover: #1e4058;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #131313;
+    --surface: #1b1b1b;
+    --text: #ecebe7;
+    --muted: #a6a39c;
+    --faint: #76736d;
+    --rule: #2f2e2c;
+    --accent: #8fb6d4;
+    --accent-hover: #b6d2e6;
+  }
+}
+
+:root[data-theme="light"] {
+  --bg: #fbfaf8;
+  --surface: #ffffff;
+  --text: #1a1a19;
+  --muted: #5c5a55;
+  --faint: #8b8880;
+  --rule: #e5e2dc;
+  --accent: #2f5d7c;
+  --accent-hover: #1e4058;
+}
+
+:root[data-theme="dark"] {
+  --bg: #131313;
+  --surface: #1b1b1b;
+  --text: #ecebe7;
+  --muted: #a6a39c;
+  --faint: #76736d;
+  --rule: #2f2e2c;
+  --accent: #8fb6d4;
+  --accent-hover: #b6d2e6;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.wrap {
+  max-width: 52rem;
+  margin: 0 auto;
+  padding: 4.5rem 1.5rem 5rem;
+}
+
+@media (max-width: 44rem) {
+  .wrap { padding-top: 3rem; }
+}
+
+/* The masthead spans the full column; body copy stays at a readable
+   measure (~75 characters) and shares the same left edge. */
+section, footer { max-width: 38rem; }
+
+/* ---------- masthead ---------- */
+
+header {
+  margin-bottom: 3rem;
+  display: flex;
+  gap: 1.75rem;
+  align-items: center;
+}
+
+.headshot {
+  width: 290px;
+  /* Required. The width/height attributes on the <img> are applied by WebKit
+     as a presentational hint, giving the element a definite 720px height —
+     and aspect-ratio is ignored unless one dimension is auto. Without this
+     the photo renders 720px tall in Safari at every width, while Chrome
+     (which uses the attributes only to derive a default ratio) looks fine. */
+  height: auto;
+  flex: none;
+  aspect-ratio: 8 / 9;
+  object-fit: cover;
+  border-radius: 3px;
+  background: var(--rule);
+  display: block;
+}
+
+/* Stack early — below this the photo starts squeezing the name rather than
+   sitting beside it. Once stacked, let the photo run the full column width:
+   at thumbnail size the beam and workshop disappear and it stops reading as
+   a scene. */
+@media (max-width: 40rem) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+  .headshot {
+    width: 100%;
+    max-width: 360px;
+  }
+}
+
+h1 {
+  font-family: ui-serif, Georgia, "Times New Roman", serif;
+  font-size: clamp(2.1rem, 6vw, 2.7rem);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  font-weight: 600;
+  margin: 0 0 0.65rem;
+}
+
+.tagline {
+  font-size: 1.06rem;
+  color: var(--muted);
+  margin: 0;
+  text-wrap: balance;
+}
+
+.tagline strong { color: var(--text); font-weight: 600; }
+
+/* ---------- sections ---------- */
+
+section { margin-bottom: 2.75rem; }
+
+h2 {
+  font-size: 0.775rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--faint);
+  margin: 0 0 1rem;
+  padding-bottom: 0.55rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+p { margin: 0 0 1.15rem; }
+p:last-child { margin-bottom: 0; }
+
+/* ---------- background list ---------- */
+
+.roles {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 1.1rem;
+}
+
+.roles li {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.25rem 1rem;
+  align-items: baseline;
+}
+
+.roles .where { font-weight: 600; }
+.roles .what { color: var(--muted); font-size: 0.94rem; grid-column: 1 / -1; }
+.roles .when {
+  color: var(--faint);
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+@media (max-width: 30rem) {
+  .roles li { grid-template-columns: 1fr; }
+  .roles .when { grid-row: 3; }
+}
+
+/* ---------- links ---------- */
+
+a {
+  color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2.5px;
+  transition: color 0.12s ease;
+}
+a:hover { color: var(--accent-hover); }
+
+.contact-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.contact-row .label {
+  color: var(--faint);
+  font-size: 0.87rem;
+  margin-right: 0.45rem;
+}
+
+footer {
+  margin-top: 3.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.875rem;
+  color: var(--faint);
+}
+
+footer p { margin: 0; }
+
+/* ---------- theme toggle ---------- */
+
+.theme-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  width: 2.25rem;
+  height: 2.25rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--rule);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 0.95rem;
+  line-height: 1;
+  padding: 0;
+}
+.theme-toggle:hover { color: var(--text); border-color: var(--faint); }
+
+@media print { .theme-toggle { display: none; } }
+
+/* ==================================================================
+   Everything below is new — Butterhut pages only. The homepage does
+   not use any of these classes, so its rendering is unaffected.
+   ================================================================== */
+
+/* ---------- article header ---------- */
+
+.page-head {
+  display: block;
+  max-width: 38rem;
+  margin-bottom: 2.5rem;
+}
+
+.page-head h1 {
+  font-size: clamp(1.8rem, 5vw, 2.3rem);
+  margin-bottom: 0.5rem;
+}
+
+.page-head .lede {
+  font-size: 1.06rem;
+  color: var(--muted);
+  margin: 0;
+  text-wrap: pretty;
+}
+
+/* Breadcrumb back to the project index. Deliberately quiet — it is a way
+   out, not a navigation bar. */
+.breadcrumb {
+  font-size: 0.85rem;
+  color: var(--faint);
+  margin: 0 0 1.75rem;
+  letter-spacing: 0.02em;
+}
+.breadcrumb a { color: var(--faint); text-decoration-color: var(--rule); }
+.breadcrumb a:hover { color: var(--text); }
+
+/* Dates are metadata here, never a headline. */
+.entry-meta {
+  font-size: 0.85rem;
+  color: var(--faint);
+  font-variant-numeric: tabular-nums;
+  margin: 0.85rem 0 0;
+}
+
+.entry-meta .status {
+  display: inline-block;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  padding: 0.05rem 0.45rem;
+  margin-right: 0.6rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.entry-meta .status.in-progress { color: var(--accent); border-color: var(--accent); }
+.entry-meta .status.planned     { color: var(--faint); }
+.entry-meta .status.complete    { color: var(--muted); }
+
+/* ---------- prose ---------- */
+
+.prose {
+  max-width: 38rem;
+}
+
+.prose h2 {
+  /* Section headings inside an article are real headings, not the small
+     uppercase labels used on the homepage. */
+  font-family: ui-serif, Georgia, "Times New Roman", serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  border-bottom: none;
+  padding-bottom: 0;
+  margin: 2.5rem 0 0.85rem;
+}
+
+.prose h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 1.85rem 0 0.6rem;
+}
+
+.prose ul, .prose ol { padding-left: 1.25rem; margin: 0 0 1.15rem; }
+.prose li { margin-bottom: 0.35rem; }
+
+.prose blockquote {
+  margin: 1.5rem 0;
+  padding-left: 1.1rem;
+  border-left: 2px solid var(--rule);
+  color: var(--muted);
+}
+
+.prose code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.9em;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 0.05em 0.3em;
+}
+
+.prose pre {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 0.9rem 1rem;
+  overflow-x: auto;
+}
+.prose pre code { background: none; border: none; padding: 0; }
+
+.prose hr {
+  border: none;
+  border-top: 1px solid var(--rule);
+  margin: 2.5rem 0;
+}
+
+/* ---------- photographs ---------- */
+
+/* Photos break out past the 38rem text measure to the full 52rem column.
+   A build log is carried by its images; holding them to the text width
+   makes them read as illustrations rather than as the subject. */
+figure {
+  margin: 2rem 0;
+  max-width: 52rem;
+}
+
+figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 3px;
+  background: var(--rule);
+}
+
+figcaption {
+  font-size: 0.87rem;
+  color: var(--faint);
+  margin-top: 0.55rem;
+  max-width: 38rem;
+  text-wrap: pretty;
+}
+
+/* Two photos side by side — a before/after, or a detail next to its
+   context. Stacks on narrow screens. */
+.pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 2rem 0;
+  max-width: 52rem;
+}
+.pair figure { margin: 0; }
+
+@media (max-width: 34rem) {
+  .pair { grid-template-columns: 1fr; }
+}
+
+/* ---------- phase index ---------- */
+
+.phases {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0;
+  max-width: 38rem;
+}
+
+.phases li {
+  border-top: 1px solid var(--rule);
+}
+.phases li:last-child { border-bottom: 1px solid var(--rule); }
+
+.phases a {
+  display: grid;
+  grid-template-columns: 2.25rem 1fr auto;
+  gap: 0 1rem;
+  align-items: baseline;
+  padding: 1rem 0;
+  text-decoration: none;
+  color: inherit;
+}
+.phases a:hover .name { color: var(--accent); }
+
+.phases .num {
+  color: var(--faint);
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+}
+.phases .name { font-weight: 600; }
+.phases .state {
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--faint);
+  white-space: nowrap;
+}
+.phases .state.in-progress { color: var(--accent); }
+.phases .blurb {
+  grid-column: 2 / -1;
+  color: var(--muted);
+  font-size: 0.94rem;
+  margin-top: 0.2rem;
+}
+
+@media (max-width: 30rem) {
+  .phases a { grid-template-columns: 2.25rem 1fr; }
+  .phases .state { grid-column: 2; grid-row: 2; margin-top: 0.2rem; }
+  .phases .blurb { grid-row: 3; }
+}
+
+/* ---------- prev / next ---------- */
+
+.pager {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-top: 3.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.9rem;
+  max-width: 38rem;
+}
+
+.pager .label {
+  display: block;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--faint);
+  margin-bottom: 0.15rem;
+}
+
+.pager .next { text-align: right; margin-left: auto; }

@@ -1,0 +1,114 @@
+{{ define "main" }}
+  {{/* This markup is the original public/index.html body, unchanged. The
+       landing page is deliberately left exactly as it was. */}}
+
+  <header>
+    {{/* Left as a relative path, exactly as hand-written. The homepage is the
+         only page that references it, and it sits at the root. */}}
+    <img class="headshot" src="headshot.jpg" width="640" height="720"
+         alt="Joseph K. Lane cutting a mortise with a chisel while framing a timber shelter.">
+
+    <div>
+      <h1>Joseph K. Lane</h1>
+      <p class="tagline">
+        <strong>Chief Architect &amp; VP of Research and Development</strong>, Ivy Biomedical Systems.<br>
+        Branford, Connecticut.
+      </p>
+    </div>
+  </header>
+
+  <section>
+    <h2>About</h2>
+    <p>
+      Joseph Kerivan Lane is Chief Architect and VP of Research and Development at Ivy Biomedical
+      Systems in Branford, Connecticut, where he leads patient-monitoring development across
+      hardware, firmware, and communication platforms.
+    </p>
+    <p>
+      He led development of Ivy's MRI-suite patient monitoring platform, engineering the hardware,
+      firmware, and communication interface to deliver best-in-class performance in the high-field,
+      high-noise MRI environment. Working in partnership with a major medical device OEM, he carried
+      the product through design validation and full production release.
+    </p>
+    <p>
+      Before Ivy he was Director of Engineering at FastCAP Systems, building advanced energy storage
+      and power management systems for Lockheed Martin, NASA, and Halliburton, and served as
+      Principal Investigator on a ~$1M NASA SBIR developing hybrid power systems for cube
+      satellites. He studied electrical engineering at MIT, and got his start at MIT Lincoln
+      Laboratory building a MEMS fast-steering mirror system for precision laser pointing. He holds
+      eleven patents.
+    </p>
+    <p>
+      His work has ranged across cardiac monitoring, beam steering, and downhole telemetry. The
+      common thread has been hardware and embedded design in challenging environments, and a
+      willingness to work wherever the problem happens to live — physics, algorithms, control, or
+      signal processing.
+    </p>
+  </section>
+
+  <section>
+    <h2>Background</h2>
+    <ul class="roles">
+      <li>
+        <span class="where">Ivy Biomedical Systems</span>
+        <span class="when">2018 – present</span>
+        <span class="what">Chief Architect / VP of Research and Development · Branford, CT</span>
+      </li>
+      <li>
+        <span class="where">FastCAP Systems</span>
+        <span class="when">2012 – 2018</span>
+        <span class="what">Director of Engineering / Lead Engineer · Boston, MA</span>
+      </li>
+      <li>
+        <span class="where">MIT Lincoln Laboratory</span>
+        <span class="when">2010 – 2012</span>
+        <span class="what">Research Engineer, Advanced Electro-Optical Systems · Lexington, MA</span>
+      </li>
+      <li>
+        <span class="where">Massachusetts Institute of Technology</span>
+        <span class="when">2011 – 2012</span>
+        <span class="what">MEng, Electrical Engineering · BS, Electrical Engineering and Computer Science</span>
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Patents</h2>
+    <p>
+      Eleven granted and pending patents spanning MRI gating and patient monitoring, ultracapacitor
+      construction, downhole telemetry and power generation, and processor-controlled ski bindings.
+      A full list is on
+      <a href="https://patents.google.com/?inventor=Joseph+Lane" rel="noopener">Google Patents</a>.
+    </p>
+  </section>
+
+  {{/* ------------------------------------------------------------------
+       Nothing on the landing page links to /butterhut/ yet — that was a
+       deliberate hold. Uncomment this section when you want the project
+       surfaced from the homepage. It uses only classes the page already
+       defines, so it will match without further CSS.
+       ------------------------------------------------------------------
+
+  <section>
+    <h2>Projects</h2>
+    <p>
+      <a href="/butterhut/">The Butterhut</a> — building a 150 square foot timber
+      frame structure on a hill in Branford. Drawings, joinery, and what went wrong.
+    </p>
+  </section>
+
+       ------------------------------------------------------------------ */}}
+
+  <section>
+    <h2>Contact</h2>
+    <p>
+      Open to conversations about hard problems — especially the ones that fall between
+      disciplines.
+    </p>
+    <ul class="contact-row">
+      <li><span class="label">Email</span><a href="mailto:jklane01@gmail.com">jklane01@gmail.com</a></li>
+      <li><span class="label">LinkedIn</span><a href="https://www.linkedin.com/in/josephlane/" rel="me noopener">josephlane</a></li>
+      <li><span class="label">GitHub</span><a href="https://github.com/jklane" rel="me noopener">jklane</a></li>
+    </ul>
+  </section>
+{{ end }}

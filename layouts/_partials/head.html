@@ -1,0 +1,104 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>{{ if .IsHome }}Joseph K. Lane — Chief Architect &amp; VP of R&amp;D, Ivy Biomedical | Branford, Connecticut{{ else }}{{ .Title }} — Joseph K. Lane{{ end }}</title>
+<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ if .IsHome }}Joseph K. Lane is Chief Architect and VP of Research and Development at Ivy Biomedical Systems in Branford, Connecticut. He builds patient-monitoring systems for the MRI suite, and holds eleven patents in medical devices, energy storage, and precision optics.{{ else }}{{ .Site.Params.description }}{{ end }}{{ end }}">
+
+{{/* Cloudflare serves this site at both josephklane.pages.dev and
+     josephklane.com. The canonical tag is what stops those being treated as
+     duplicate pages — it is now per-page rather than hardcoded to the root. */}}
+<link rel="canonical" href="{{ .Permalink }}">
+
+{{ if .IsHome }}
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Joseph K. Lane — Chief Architect &amp; VP of R&amp;D, Ivy Biomedical">
+<meta property="og:description" content="Patient-monitoring systems for the MRI suite. Branford, Connecticut.">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:image" content="{{ "headshot.jpg" | absURL }}">
+<meta property="profile:first_name" content="Joseph">
+<meta property="profile:last_name" content="Lane">
+<meta name="twitter:card" content="summary">
+{{ else }}
+<meta property="og:type" content="article">
+<meta property="og:title" content="{{ .Title }}">
+<meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+<meta property="og:url" content="{{ .Permalink }}">
+{{/* First image in the page bundle becomes the social card, if there is one. */}}
+{{ with (.Resources.ByType "image").GetMatch "*" }}
+  {{ $card := .Resize "1200x webp q82" }}
+<meta property="og:image" content="{{ $card.Permalink }}">
+<meta name="twitter:card" content="summary_large_image">
+{{ else }}
+<meta name="twitter:card" content="summary">
+{{ end }}
+{{ end }}
+
+{{ $css := resources.Get "css/main.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+
+{{ if .IsHome }}
+{{/* Person schema lives on the homepage only. Repeating it on every page
+     would give search engines several competing definitions of the same
+     @id. The sameAs array should stay in sync with wherever profiles
+     actually live; a dead link there is worse than no link. */}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://josephklane.com/#person",
+  "name": "Joseph Kerivan Lane",
+  "alternateName": ["Joseph K. Lane", "Joseph Lane", "Joe Lane"],
+  "url": "https://josephklane.com/",
+  "image": "https://josephklane.com/headshot.jpg",
+  "email": "mailto:jklane01@gmail.com",
+  "jobTitle": "Chief Architect and Vice President of Research and Development",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Ivy Biomedical Systems, Inc.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Branford",
+      "addressRegion": "CT",
+      "addressCountry": "US"
+    }
+  },
+  "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "Massachusetts Institute of Technology",
+    "sameAs": "https://en.wikipedia.org/wiki/Massachusetts_Institute_of_Technology"
+  },
+  "homeLocation": {
+    "@type": "Place",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Branford",
+      "addressRegion": "CT",
+      "addressCountry": "US"
+    }
+  },
+  "knowsAbout": [
+    "Hardware engineering",
+    "Embedded systems design",
+    "Mixed-signal electronics design",
+    "Low-noise analog design",
+    "Control systems",
+    "Signal processing",
+    "Algorithm development",
+    "Applied physics",
+    "Cardiac monitoring",
+    "MRI-compatible patient monitoring",
+    "Medical device engineering",
+    "Design controls and FDA design validation",
+    "Electro-optical systems",
+    "Laser beam steering",
+    "Energy storage and power management",
+    "Downhole telemetry"
+  ],
+  "sameAs": [
+    "https://www.linkedin.com/in/josephlane/",
+    "https://github.com/jklane",
+    "https://patents.google.com/?inventor=Joseph+Lane"
+  ]
+}
+</script>
+{{ end }}

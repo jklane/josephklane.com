@@ -1,0 +1,17 @@
+{{- /*
+  Author notes that never reach the built site.
+
+      {{< comment >}}
+      Anything in here is dropped entirely.
+      {{< /comment >}}
+
+  An HTML comment in a content file is NOT equivalent: hugo.toml sets
+  goldmark's unsafe = true so that raw HTML works in markdown, which means
+  <!-- ... --> passes through into the served page. Invisible in the browser,
+  but present in view-source. This shortcode discards its inner content, so
+  nothing is emitted at all.
+
+  .Inner is assigned and thrown away rather than simply ignored: Hugo errors
+  out if a shortcode with a closing tag never evaluates it.
+*/ -}}
+{{- $_ := .Inner -}}

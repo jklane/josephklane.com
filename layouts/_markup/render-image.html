@@ -1,0 +1,64 @@
+{{- /*
+  Turns a plain markdown image into a responsive <figure>.
+
+      ![Alt text](pier-hole.jpg "Optional caption")
+
+  The file is looked up in the page bundle — the same directory as
+  index.md — so photos live beside the writing that describes them.
+  Hugo generates one webp per width in site.Params.imageWidths (skipping
+  any wider than the original), emits a srcset, and writes the real
+  width/height onto the tag so the page does not shift as photos load.
+
+  EXIF is dropped by Hugo when it re-encodes. GPS specifically is also
+  disabled in hugo.toml — every photo here is of a structure at a known
+  address, and phone photos carry coordinates.
+
+  An external or absolute URL falls through to a plain <img>.
+*/ -}}
+
+{{- $alt := .Text -}}
+{{- $caption := .Title -}}
+{{- $res := "" -}}
+{{- $dest := .Destination -}}
+
+{{- if not (urls.Parse $dest).IsAbs -}}
+  {{- $lookup := strings.TrimPrefix "./" $dest -}}
+  {{- with .Page.Resources.GetMatch $lookup -}}
+    {{- $res = . -}}
+  {{- end -}}
+{{- end -}}
+
+{{- if and $res (eq $res.ResourceType "image") -}}
+  {{- $widths := site.Params.imageWidths | default (slice 640 960 1440 1920) -}}
+  {{- $usable := slice -}}
+  {{- range $widths -}}
+    {{- if le . $res.Width -}}{{- $usable = $usable | append . -}}{{- end -}}
+  {{- end -}}
+  {{- /* A photo narrower than the smallest target still needs one entry. */ -}}
+  {{- if not $usable -}}{{- $usable = slice $res.Width -}}{{- end -}}
+
+  {{- $fallback := $res.Resize (printf "%dx webp q82" (index $usable (sub (len $usable) 1))) -}}
+  {{- $srcset := slice -}}
+  {{- range $usable -}}
+    {{- $v := $res.Resize (printf "%dx webp q82" .) -}}
+    {{- $srcset = $srcset | append (printf "%s %dw" $v.RelPermalink $v.Width) -}}
+  {{- end -}}
+
+<figure>
+  <img src="{{ $fallback.RelPermalink }}"
+       srcset="{{ delimit $srcset ", " }}"
+       sizes="(max-width: 54rem) 100vw, 52rem"
+       width="{{ $fallback.Width }}" height="{{ $fallback.Height }}"
+       alt="{{ $alt }}" loading="lazy" decoding="async">
+  {{- with $caption }}
+  <figcaption>{{ . | markdownify }}</figcaption>
+  {{- end }}
+</figure>
+{{- else -}}
+<figure>
+  <img src="{{ $dest | safeURL }}" alt="{{ $alt }}" loading="lazy" decoding="async">
+  {{- with $caption }}
+  <figcaption>{{ . | markdownify }}</figcaption>
+  {{- end }}
+</figure>
+{{- end -}}

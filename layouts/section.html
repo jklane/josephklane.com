@@ -1,0 +1,61 @@
+{{ define "main" }}
+  <div class="page-head">
+    <p class="breadcrumb"><a href="/">Joseph K. Lane</a></p>
+    <h1>{{ .Title }}</h1>
+    {{ with .Params.lede }}<p class="lede">{{ . }}</p>{{ end }}
+  </div>
+
+  {{ with .Content }}
+  <div class="prose">
+    {{ . }}
+  </div>
+  {{ end }}
+
+  {{/* Both list headings are front-matter fields on the section's _index.md,
+       so a second project can use these same templates without inheriting
+       Butterhut's vocabulary. A boat would want "Stages"; a workshop build
+       might want "Steps". Defaults keep existing sections unchanged. */}}
+  {{ $introLabel := .Params.intro_label | default "Start here" }}
+  {{ $phaseLabel := .Params.phase_label | default "Build phases" }}
+
+  {{/* Weight 0 means "not a build phase" — the introduction, and anything
+       else that belongs to the project without being a step in it. Those
+       are listed here instead of in the numbered list below. */}}
+  {{ with where .Pages "Weight" "eq" 0 }}
+  <section>
+    <h2>{{ $introLabel }}</h2>
+    <ul class="phases">
+      {{ range . }}
+      <li>
+        <a href="{{ .RelPermalink }}">
+          <span class="num">·</span>
+          <span class="name">{{ .Title }}</span>
+          {{ with .Params.lede }}<span class="blurb">{{ . }}</span>{{ end }}
+        </a>
+      </li>
+      {{ end }}
+    </ul>
+  </section>
+  {{ end }}
+
+  <section>
+    <h2>{{ $phaseLabel }}</h2>
+    {{/* Ordered by the `weight` in each phase's front matter, not by date.
+         The phases are the structure of this project; dates are metadata
+         that happens to attach to entries. */}}
+    <ul class="phases">
+      {{ range (where .Pages "Weight" "gt" 0).ByWeight }}
+      <li>
+        <a href="{{ .RelPermalink }}">
+          <span class="num">{{ printf "%02d" .Weight }}</span>
+          <span class="name">{{ .Title }}</span>
+          {{ with .Params.status }}
+          <span class="state {{ . | urlize }}">{{ . }}</span>
+          {{ end }}
+          {{ with .Params.lede }}<span class="blurb">{{ . }}</span>{{ end }}
+        </a>
+      </li>
+      {{ end }}
+    </ul>
+  </section>
+{{ end }}

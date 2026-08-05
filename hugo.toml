@@ -1,0 +1,46 @@
+baseURL = "https://josephklane.com/"
+locale = "en-us"
+title = "Joseph K. Lane"
+
+# No tags or categories on this site — the phase ordering is the taxonomy.
+# Left enabled, Hugo generates empty /tags/ and /categories/ pages.
+disableKinds = ["taxonomy", "term", "rss"]
+
+# Hugo writes here; wrangler.jsonc serves this directory unchanged.
+publishDir = "public"
+
+# URLs come from the content directory names — content/butterhut/site-work/
+# serves at /butterhut/site-work/. Deliberately not using a [permalinks] rule:
+# `:slug` falls back to the urlized *title*, which turns a folder named
+# site-work into /butterhut/site-work-and-preparation/. The folder name is the
+# URL, so renaming a folder is the only thing that can break a link.
+
+# Photos are the point of this site, so markdown needs to allow raw HTML
+# (figure captions, side-by-side pairs) inside content files.
+[markup.goldmark.renderer]
+  unsafe = true
+
+[markup.tableOfContents]
+  startLevel = 2
+  endLevel = 3
+
+# Every image in a page bundle is resized through these settings by the
+# render hook in layouts/_markup/render-image.html.
+[imaging]
+  quality = 82
+  resampleFilter = "Lanczos"
+  # Strips EXIF from processed output. Phone photos carry GPS coordinates,
+  # and this site's whole subject is a structure at a known address.
+  [imaging.exif]
+    disableDate = false
+    disableLatLong = true
+
+[params]
+  description = "Joseph K. Lane — Chief Architect & VP of R&D, Ivy Biomedical. Branford, Connecticut."
+  # Widths generated for each content photo; the largest is also the cap on
+  # how big a single image is served.
+  imageWidths = [640, 960, 1440, 1920]
+
+[params.butterhut]
+  title = "The Butterhut"
+  summary = "Building a 150 square foot timber frame structure on a hill in Branford, Connecticut."

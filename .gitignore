@@ -16,3 +16,10 @@ $RECYCLE.BIN/
 # Scratch
 *.tmp
 *.bak
+
+# Hugo build output. `public/` is generated now — Cloudflare runs the build,
+# so committing it would mean every commit carried a full copy of the site
+# plus every resized photo.
+/public/
+/resources/
+.hugo_build.lock

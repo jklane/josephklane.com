@@ -1,0 +1,60 @@
+{{ define "main" }}
+  <div class="page-head">
+    {{ with .Parent }}
+    <p class="breadcrumb"><a href="/">Joseph K. Lane</a> · <a href="{{ .RelPermalink }}">{{ .Title }}</a></p>
+    {{ end }}
+
+    <h1>{{ .Title }}</h1>
+    {{ with .Params.lede }}<p class="lede">{{ . }}</p>{{ end }}
+
+    {{/* Status and date are deliberately small and below the title. A build
+         log organised by phase should not lead with a datestamp — that is
+         what makes this kind of page feel stale a year later. */}}
+    {{ if or .Params.status (not .Date.IsZero) }}
+    <p class="entry-meta">
+      {{ with .Params.status }}<span class="status {{ . | urlize }}">{{ . }}</span>{{ end }}
+      {{ if not .Date.IsZero }}{{ if ne .Params.status "planned" }}{{ .Date.Format "January 2006" }}{{ end }}{{ end }}
+    </p>
+    {{ end }}
+  </div>
+
+  <div class="prose">
+    {{ .Content }}
+  </div>
+
+  {{/* Prev/next walk the build phases in order, so a reader can follow the
+       build start to finish.
+
+       Only weight > 0 pages are in the chain. Weight 0 means "not a phase"
+       (the introduction), and Hugo's ByWeight sorts unweighted pages LAST —
+       so including them put the introduction after the final phase and made
+       the pager wrap around. A weight-0 page gets a one-way link into the
+       first phase instead. */}}
+  {{ $phases := (where .Parent.Pages "Weight" "gt" 0).ByWeight }}
+  {{ $prev := false }}
+  {{ $next := false }}
+
+  {{ if gt .Weight 0 }}
+    {{ $i := 0 }}
+    {{ range $n, $p := $phases }}{{ if eq $p.RelPermalink $.RelPermalink }}{{ $i = $n }}{{ end }}{{ end }}
+    {{ if gt $i 0 }}{{ $prev = index $phases (sub $i 1) }}{{ end }}
+    {{ if lt (add $i 1) (len $phases) }}{{ $next = index $phases (add $i 1) }}{{ end }}
+  {{ else if $phases }}
+    {{ $next = index $phases 0 }}
+  {{ end }}
+
+  {{ if or $prev $next }}
+  <nav class="pager">
+    {{ with $prev }}
+    <a class="prev" href="{{ .RelPermalink }}">
+      <span class="label">Previous</span>{{ .Title }}
+    </a>
+    {{ end }}
+    {{ with $next }}
+    <a class="next" href="{{ .RelPermalink }}">
+      <span class="label">Next</span>{{ .Title }}
+    </a>
+    {{ end }}
+  </nav>
+  {{ end }}
+{{ end }}

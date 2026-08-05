@@ -6,26 +6,26 @@ description: "The backstory to the Butterhut — why timber frame and why this p
 draft: false
 ---
 
-<!--
+{{< comment >}}
 Weight 0 keeps this out of the numbered build phases and lists it under
 "Start here" on /butterhut/ instead. No status tag and no date, on purpose —
 the introduction is the one page that should not read as dated.
 
 Below is a skeleton, not text to keep. Rewrite all of it.
--->
+{{< /comment >}}
 
 ## The Backstory
 
-<!--
+{{< comment >}}
 The site itself. What was there before, how long you have looked at it,
 what made it the place. A photo of the bare hill belongs here — it becomes
 the "before" image the whole project is measured against, and it is the one
 photograph you cannot go back and take later.
--->
+{{< /comment >}}
 
 ## The Location
 
-<!--
+{{< comment >}}
 The honest answer. Not "it is traditional" but whatever actually drew you:
 the joinery, wanting to work at a scale a person can hold in their head,
 having spent a career on things that are assembled rather than built.
@@ -33,7 +33,7 @@ having spent a career on things that are assembled rather than built.
 There is a real thread here worth naming — a career designing hardware that
 has to survive an MRI bore, and a building held together by wood cut to fit
 wood. Both are about tolerances and about what happens at the joints.
--->
+{{< /comment >}}
 
 {{< comment >}}
 ====================== PHOTO REFERENCE ======================

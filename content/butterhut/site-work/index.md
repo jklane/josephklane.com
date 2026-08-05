@@ -6,7 +6,7 @@ lede: "Clearing, laying out the pier grid on a slope, digging holes, pouring con
 draft: false
 ---
 
-<!--
+{{< comment >}}
 Worth capturing here:
   - the layout method — batter boards, string lines, how you got square
   - measured diagonals, and how far off the first attempt was
@@ -17,5 +17,4 @@ Worth capturing here:
 
 Drop photos into this folder and reference them by filename:
   ![Batter boards set at the uphill corner.](layout-strings.jpg "The diagonals were 3/4in out on the first pass.")
--->
-
+{{< /comment >}}

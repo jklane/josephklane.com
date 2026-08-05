@@ -3,10 +3,10 @@ title: "Frame Construction"
 weight: 4
 status: "planned"
 lede: "Cutting the joinery, test fitting the bents, and the raising."
-draft: false
+draft: true
 ---
 
-<!--
+{{< comment >}}
 The centrepiece. Two distinct stories that may want splitting later:
 
   1. Cutting — layout on the timber, boring and chopping mortises, sawing
@@ -23,4 +23,4 @@ beside the same joint pegged home:
     <figure><img src="..." alt="..."><figcaption>Layout.</figcaption></figure>
     <figure><img src="..." alt="..."><figcaption>Cut.</figcaption></figure>
   </div>
--->
+{{< /comment >}}
